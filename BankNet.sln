@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankNet.Entity", "BankNet.Entity\BankNet.Entity.csproj", "{ADB11473-79E1-4AB6-86D9-D0848BBE0A19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankNet.Core", "BankNet.Core\BankNet.Core.csproj", "{16B40F81-B4CF-4EE9-832B-5872E94898DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankNet.Data", "BankNet.Data\BankNet.Data.csproj", "{9A827183-7AE5-40BC-8D3B-8D986F5E06C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{DA2BF170-7583-4AF4-A63A-BC991C8FC55F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Export", "Export\Export.csproj", "{351556CE-11A3-43B5-95C7-A3ACD4EBEABC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DA2BF170-7583-4AF4-A63A-BC991C8FC55F} = {DA2BF170-7583-4AF4-A63A-BC991C8FC55F}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 6
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = BankNet.Core\\BankNet.Core.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = BankNet.Core\\
+		SccProjectUniqueName2 = BankNet.Data\\BankNet.Data.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = BankNet.Data\\
+		SccProjectUniqueName3 = BankNet.Entity\\BankNet.Entity.csproj
+		SccLocalPath3 = .
+		SccProjectFilePathRelativizedFromConnection3 = BankNet.Entity\\
+		SccProjectUniqueName4 = Export\\Export.csproj
+		SccLocalPath4 = .
+		SccProjectFilePathRelativizedFromConnection4 = Export\\
+		SccProjectUniqueName5 = Web\\Web.csproj
+		SccLocalPath5 = .
+		SccProjectFilePathRelativizedFromConnection5 = Web\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADB11473-79E1-4AB6-86D9-D0848BBE0A19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADB11473-79E1-4AB6-86D9-D0848BBE0A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADB11473-79E1-4AB6-86D9-D0848BBE0A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADB11473-79E1-4AB6-86D9-D0848BBE0A19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16B40F81-B4CF-4EE9-832B-5872E94898DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16B40F81-B4CF-4EE9-832B-5872E94898DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16B40F81-B4CF-4EE9-832B-5872E94898DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16B40F81-B4CF-4EE9-832B-5872E94898DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A827183-7AE5-40BC-8D3B-8D986F5E06C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A827183-7AE5-40BC-8D3B-8D986F5E06C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A827183-7AE5-40BC-8D3B-8D986F5E06C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A827183-7AE5-40BC-8D3B-8D986F5E06C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA2BF170-7583-4AF4-A63A-BC991C8FC55F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA2BF170-7583-4AF4-A63A-BC991C8FC55F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA2BF170-7583-4AF4-A63A-BC991C8FC55F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA2BF170-7583-4AF4-A63A-BC991C8FC55F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{351556CE-11A3-43B5-95C7-A3ACD4EBEABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{351556CE-11A3-43B5-95C7-A3ACD4EBEABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{351556CE-11A3-43B5-95C7-A3ACD4EBEABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{351556CE-11A3-43B5-95C7-A3ACD4EBEABC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

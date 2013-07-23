@@ -1,0 +1,17 @@
+E:\BankNet\Export\bin\TestServices.dll
+E:\BankNet\Export\bin\TestServices.pdb
+E:\BankNet\Export\bin\BankNet.Core.dll
+E:\BankNet\Export\bin\ExcelPackage.dll
+E:\BankNet\Export\bin\BankNet.Core.pdb
+E:\BankNet\Export\obj\Debug\ResolveAssemblyReference.cache
+E:\BankNet\Export\obj\Debug\TestServices.dll
+E:\BankNet\Export\obj\Debug\TestServices.pdb
+E:\TAN\PayGate\Export\bin\TestServices.dll
+E:\TAN\PayGate\Export\bin\TestServices.pdb
+E:\TAN\PayGate\Export\bin\BankNet.Core.dll
+E:\TAN\PayGate\Export\bin\ExcelPackage.dll
+E:\TAN\PayGate\Export\bin\Enyim.Caching.dll
+E:\TAN\PayGate\Export\bin\BankNet.Core.pdb
+E:\TAN\PayGate\Export\obj\Debug\ResolveAssemblyReference.cache
+E:\TAN\PayGate\Export\obj\Debug\TestServices.dll
+E:\TAN\PayGate\Export\obj\Debug\TestServices.pdb

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetListAnVienCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="date1" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="date2" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="status" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListAnVienCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListAnVienCardResult" type="tns:ArrayOfPayCardInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPayCardInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PayCardInfo" nillable="true" type="tns:PayCardInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PayCardInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResulId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Msg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResulFull" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AuthenticationHeader" type="tns:AuthenticationHeader" />
+      <s:complexType name="AuthenticationHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="GetListMobileCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="date1" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="date2" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="status" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListMobileCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListMobileCardResult" type="tns:ArrayOfGateCardInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGateCardInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GateCardInfo" nillable="true" type="tns:GateCardInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GateCardInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SerialsId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResultId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Msg" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetListSubmitVoucher">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="date1" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="date2" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="status" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListSubmitVoucherResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListSubmitVoucherResult" type="tns:ArrayOfSubmitVoucherInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSubmitVoucherInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SubmitVoucherInfo" nillable="true" type="tns:SubmitVoucherInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SubmitVoucherInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="returnCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseData" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="returnCodeDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="signature" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreateDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetListAnVienCardSoapIn">
+    <wsdl:part name="parameters" element="tns:GetListAnVienCard" />
+  </wsdl:message>
+  <wsdl:message name="GetListAnVienCardSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListAnVienCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetListAnVienCardAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetListMobileCardSoapIn">
+    <wsdl:part name="parameters" element="tns:GetListMobileCard" />
+  </wsdl:message>
+  <wsdl:message name="GetListMobileCardSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListMobileCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetListMobileCardAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetListSubmitVoucherSoapIn">
+    <wsdl:part name="parameters" element="tns:GetListSubmitVoucher" />
+  </wsdl:message>
+  <wsdl:message name="GetListSubmitVoucherSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListSubmitVoucherResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetListSubmitVoucherAuthenticationHeader">
+    <wsdl:part name="AuthenticationHeader" element="tns:AuthenticationHeader" />
+  </wsdl:message>
+  <wsdl:portType name="ServicesSoap">
+    <wsdl:operation name="GetListAnVienCard">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Lấy list thông tin AnVienCard (PayCard) - status=0: ok| =1: no ok| 2: all</wsdl:documentation>
+      <wsdl:input message="tns:GetListAnVienCardSoapIn" />
+      <wsdl:output message="tns:GetListAnVienCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListMobileCard">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Lấy list thông tin thẻ cào điện thoại - status=0: ok | =1: no ok| 2: all</wsdl:documentation>
+      <wsdl:input message="tns:GetListMobileCardSoapIn" />
+      <wsdl:output message="tns:GetListMobileCardSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListSubmitVoucher">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Lấy list thông tin submit voucher - status=0: ok | =1: no ok| 2: all</wsdl:documentation>
+      <wsdl:input message="tns:GetListSubmitVoucherSoapIn" />
+      <wsdl:output message="tns:GetListSubmitVoucherSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicesSoap" type="tns:ServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetListAnVienCard">
+      <soap:operation soapAction="http://tempuri.org/GetListAnVienCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetListAnVienCardAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListMobileCard">
+      <soap:operation soapAction="http://tempuri.org/GetListMobileCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetListMobileCardAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListSubmitVoucher">
+      <soap:operation soapAction="http://tempuri.org/GetListSubmitVoucher" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetListSubmitVoucherAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicesSoap12" type="tns:ServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetListAnVienCard">
+      <soap12:operation soapAction="http://tempuri.org/GetListAnVienCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetListAnVienCardAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListMobileCard">
+      <soap12:operation soapAction="http://tempuri.org/GetListMobileCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetListMobileCardAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListSubmitVoucher">
+      <soap12:operation soapAction="http://tempuri.org/GetListSubmitVoucher" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetListSubmitVoucherAuthenticationHeader" part="AuthenticationHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Services">
+    <wsdl:port name="ServicesSoap" binding="tns:ServicesSoap">
+      <soap:address location="http://localhost:9966/Services.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicesSoap12" binding="tns:ServicesSoap12">
+      <soap12:address location="http://localhost:9966/Services.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

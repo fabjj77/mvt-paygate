@@ -1,0 +1,129 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    color: #002277;
+    font-family: Arial,Tahoma,Verdana;
+    font-size: 12px;
+}
+
+body 
+{
+    width: 100%;    
+}
+
+a {
+    text-decoration: none;
+}
+
+#header {
+    /*width: 100%;*/
+    height: 100px;
+    display: block;
+    border: 1px solid #aaa;
+    margin: 10px;
+}
+
+#content {
+    display: block;
+    margin: 0;
+    overflow: hidden;
+}
+
+#Left-menu {
+    width: 90%;
+    display: block;
+    margin: 0 10px 10px;
+    height: auto;
+    float: left;
+    border: 1px solid #aaa;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+}
+
+#Left-menu .title, #content-wrapper .title {
+    text-align: center;
+    font-weight: bold;
+    background: url('/Admin/IMG/menu_head_fill.PNG') repeat-x 0 -1px;
+    height: 27px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    line-height: 25px;
+}
+
+#Left-menu ul {
+    margin-left: 6px;
+}
+
+#Left-menu ul li {
+    border-bottom: 1px solid #B3D4EE;
+    line-height: 27px;
+    list-style: none;
+}
+
+#Left-menu ul li:last-child {
+    border: 0 none;
+}
+
+#Left-menu ul li a {
+    
+}
+
+#content-wrapper 
+{
+    width: 98%;
+    display: block;
+    margin: 0 10px 10px 10px;
+    height: auto;
+    float: left;
+    border: 1px solid #aaa;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+}
+
+#footer {
+    display: block;
+    border: 1px solid #aaa;
+    margin: 0 10px 10px;
+}
+
+/****************table list format***********************/
+.Header, tr.Header, tr.Header:hover
+{
+    background-color: rgb(88, 152, 197);
+    border: solid 1px #404040;
+    font-weight: bold;
+    color: White;
+    font-family: Arial;
+    text-align: left;
+}
+
+
+table.Contents
+{
+    border-left: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+    border-collapse: collapse;
+}
+
+table.Contents TD
+{
+    padding: 3px 10px;
+    border-right: solid 1px #ccc;
+}
+
+.Contents .Item
+{
+    background-color: rgb(242, 249, 255);
+    height: 20px;
+}
+
+.Contents .AlterItem
+{
+    height: 20px;
+}

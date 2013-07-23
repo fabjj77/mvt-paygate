@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://anvien.vn/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://anvien.vn/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://anvien.vn/">
+      <s:element name="CardInputSandbox">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardSerial" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardPin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CardInputSandboxResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CardInputSandboxResult" type="tns:CardResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CardResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Amount" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AuthenSoapHeader" type="tns:AuthenSoapHeader" />
+      <s:complexType name="AuthenSoapHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="CardInputLive">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardSerial" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardPin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CardInputLiveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CardInputLiveResult" type="tns:CardResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TopupCard">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="serviceName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardSerial" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cardPin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TopupCardResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TopupCardResult" type="tns:CardResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CardInputSandboxSoapIn">
+    <wsdl:part name="parameters" element="tns:CardInputSandbox" />
+  </wsdl:message>
+  <wsdl:message name="CardInputSandboxSoapOut">
+    <wsdl:part name="parameters" element="tns:CardInputSandboxResponse" />
+  </wsdl:message>
+  <wsdl:message name="CardInputSandboxAuthenSoapHeader">
+    <wsdl:part name="AuthenSoapHeader" element="tns:AuthenSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="CardInputLiveSoapIn">
+    <wsdl:part name="parameters" element="tns:CardInputLive" />
+  </wsdl:message>
+  <wsdl:message name="CardInputLiveSoapOut">
+    <wsdl:part name="parameters" element="tns:CardInputLiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="CardInputLiveAuthenSoapHeader">
+    <wsdl:part name="AuthenSoapHeader" element="tns:AuthenSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="TopupCardSoapIn">
+    <wsdl:part name="parameters" element="tns:TopupCard" />
+  </wsdl:message>
+  <wsdl:message name="TopupCardSoapOut">
+    <wsdl:part name="parameters" element="tns:TopupCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="TopupCardAuthenSoapHeader">
+    <wsdl:part name="AuthenSoapHeader" element="tns:AuthenSoapHeader" />
+  </wsdl:message>
+  <wsdl:portType name="WsGateCardSoap">
+    <wsdl:operation name="CardInputSandbox">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Dịch vụ Nạp thẻ cho phép người dùng bên phía đối tác có thể sử dụng các dịch vụ nhằm mục đích tăng tính tiện dụng và đạt hiệu quả cao cho người sử dụng. [Sandbox]</wsdl:documentation>
+      <wsdl:input message="tns:CardInputSandboxSoapIn" />
+      <wsdl:output message="tns:CardInputSandboxSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CardInputLive">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Dịch vụ Nạp thẻ cho phép người dùng bên phía đối tác có thể sử dụng các dịch vụ nhằm mục đích tăng tính tiện dụng và đạt hiệu quả cao cho người sử dụng. [Live]</wsdl:documentation>
+      <wsdl:input message="tns:CardInputLiveSoapIn" />
+      <wsdl:output message="tns:CardInputLiveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TopupCard">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Thực hiện kiểm tra thông tin thẻ và khóa thẻ cào Viettel</wsdl:documentation>
+      <wsdl:input message="tns:TopupCardSoapIn" />
+      <wsdl:output message="tns:TopupCardSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WsGateCardSoap" type="tns:WsGateCardSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CardInputSandbox">
+      <soap:operation soapAction="http://anvien.vn/CardInputSandbox" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CardInputSandboxAuthenSoapHeader" part="AuthenSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CardInputLive">
+      <soap:operation soapAction="http://anvien.vn/CardInputLive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CardInputLiveAuthenSoapHeader" part="AuthenSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TopupCard">
+      <soap:operation soapAction="http://anvien.vn/TopupCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:TopupCardAuthenSoapHeader" part="AuthenSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WsGateCardSoap12" type="tns:WsGateCardSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CardInputSandbox">
+      <soap12:operation soapAction="http://anvien.vn/CardInputSandbox" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CardInputSandboxAuthenSoapHeader" part="AuthenSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CardInputLive">
+      <soap12:operation soapAction="http://anvien.vn/CardInputLive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CardInputLiveAuthenSoapHeader" part="AuthenSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TopupCard">
+      <soap12:operation soapAction="http://anvien.vn/TopupCard" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:TopupCardAuthenSoapHeader" part="AuthenSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WsGateCard">
+    <wsdl:port name="WsGateCardSoap" binding="tns:WsGateCardSoap">
+      <soap:address location="http://118.70.205.138/WsGateCard/WsGateCard.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WsGateCardSoap12" binding="tns:WsGateCardSoap12">
+      <soap12:address location="http://118.70.205.138/WsGateCard/WsGateCard.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

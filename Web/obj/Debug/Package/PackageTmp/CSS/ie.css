@@ -1,0 +1,9 @@
+﻿legend {
+	margin-bottom: 20px;
+}
+
+* html { overflow-x: hidden; }
+
+.bannerfixed { display: none; }
+
+.BlockMainAndOther .body { width: 90%; }

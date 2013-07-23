@@ -1,0 +1,51 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.master.cs" Inherits="Web.Admin.Admin" %>
+
+<%@ Register src="~/usercontrols/admin/uc_header.ascx" tagname="uc_header" tagprefix="uc1" %>
+
+<%@ Register src="~/usercontrols/admin/uc_Menu.ascx" tagname="uc_Menu" tagprefix="uc2" %>
+
+<%@ Register src="~/usercontrols/admin/uc_Footer.ascx" tagname="uc_Footer" tagprefix="uc3" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Admin</title>
+    <link href="CSS/Styles.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link rel="stylesheet" href="http://jqueryui.com/jquery-wp-content/themes/jqueryui.com/style.css">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <uc1:uc_header ID="uc_header1" runat="server" />
+        <div id="content">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td width="15%" valign="top">
+                        <div id="Left-menu">
+                            <div class="title">Menu</div>
+                            <uc2:uc_Menu ID="uc_Menu1" runat="server" />
+                        </div>
+                    </td>
+                    <td width="85%" valign="top">
+                        <div id="content-wrapper">
+                            <div class="title">
+                                <asp:ContentPlaceHolder ID="TitleContent" runat="server">tiêu đề</asp:ContentPlaceHolder> 
+                            </div>
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <uc3:uc_Footer ID="uc_Footer1" runat="server" />
+    </div>
+    </form>
+</body>
+</html>

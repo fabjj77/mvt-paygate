@@ -1,0 +1,55 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.master.cs" Inherits="Web.Default1" %>
+
+<%@ Register Src="~/usercontrols/uc_menu.ascx" TagName="uc_menu" TagPrefix="uc1" %>
+<%@ Register Src="~/usercontrols/uc_Footer.ascx" TagName="uc_Footer" TagPrefix="uc2" %>
+<%@ Register Src="~/usercontrols/uc_Header.ascx" TagName="uc_Header" TagPrefix="uc3" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Hệ thống thanh toán truyền hình An Viên</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link href="http://thanhtoan.truyenhinhanvien.vn/wp-content/themes/avgtv/style.css" type="text/css" />
+    <link href="http://static.truyenhinhanvien.vn/anvien/Themes/Templates/anvien/style.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="http://thanhtoan.truyenhinhanvien.vn/wp-content/themes/avgtv/avg-style.css" rel="stylesheet" type="text/css" />
+    <link href="http://thanhtoan.truyenhinhanvien.vn/wp-content/themes/avgtv/page-payment.css" rel="stylesheet" type="text/css" />
+    <link href="http://thanhtoan.truyenhinhanvien.vn/wp-content/themes/avgtv/ie.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        var BASE_URL = 'http://thanhtoan.truyenhinhanvien.vn';
+        var TEMPLATE_URL = 'http://thanhtoan.truyenhinhanvien.vn/wp-content/themes/avgtv';
+    </script>
+    <script type="text/javascript" src="http://thanhtoan.truyenhinhanvien.vn/wp-content/themes/avgtv/js/jquery-1.6.min.js"></script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+    </head>
+    <body>
+        <%--<form id="form1" runat="server">--%>
+            <div class="top">
+                <div class="main960" id="HeaderZone">
+                    <uc3:uc_Header ID="uc_Header1" runat="server" />
+                    <div class="clearfix">
+                    </div>
+                    <div class="navigation wrap" id="ddtabs">
+                        <div id="menu_home" class="main_menu">
+                            <uc1:uc_menu ID="uc_menu1" runat="server" />
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix">
+                </div>
+            </div>
+            <div id="avg-wrapper-out">
+                <div id="avg-wrapper" class="main960">
+                    <div class="post-47940 page type-page status-publish hentry" id="avg-page">
+                        <div id="avg-content-wrapper">
+                            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <uc2:uc_Footer ID="uc_Footer1" runat="server" />
+            </div>
+        <%--</form>--%>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://ws.napthe.avg.com/" targetNamespace="http://ws.napthe.avg.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="submitVoucherByScratchcard" type="tns:submitVoucherByScratchcard" />
+  <xs:element name="submitVoucherByScratchcardResponse" type="tns:submitVoucherByScratchcardResponse" />
+  <xs:complexType name="submitVoucherByScratchcard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="stbNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="cardNumber" type="xs:string" />
+      <xs:element minOccurs="0" name="clientTransId" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="submitVoucherByScratchcardResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:response" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="responseData" type="xs:string" />
+      <xs:element minOccurs="0" name="returnCode" type="xs:string" />
+      <xs:element minOccurs="0" name="returnCodeDescription" type="xs:string" />
+      <xs:element minOccurs="0" name="signature" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

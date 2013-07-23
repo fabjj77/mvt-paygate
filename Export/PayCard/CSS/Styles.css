@@ -1,0 +1,34 @@
+﻿.Header, tr.Header, tr.Header:hover
+{
+    background-color: rgb(88, 152, 197);
+    border: solid 1px #404040;
+    font-weight: bold;
+    color: White;
+    font-family: Arial;
+    text-align: left;
+}
+
+
+table.Contents
+{
+    border-left: solid 1px #ccc;
+    border-bottom: solid 1px #ccc;
+    border-collapse: collapse;
+}
+
+table.Contents TD
+{
+    padding: 3px 10px;
+    border-right: solid 1px #ccc;
+}
+
+.Contents .Item
+{
+    background-color: rgb(242, 249, 255);
+    height: 20px;
+}
+
+.Contents .AlterItem
+{
+    height: 20px;
+}

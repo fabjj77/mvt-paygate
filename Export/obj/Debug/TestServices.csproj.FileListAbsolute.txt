@@ -1,0 +1,8 @@
+E:\BankNet\TestServices\bin\TestServices.dll
+E:\BankNet\TestServices\bin\TestServices.pdb
+E:\BankNet\TestServices\bin\BankNet.Core.dll
+E:\BankNet\TestServices\bin\BankNet.Core.pdb
+E:\BankNet\TestServices\obj\Debug\ResolveAssemblyReference.cache
+E:\BankNet\TestServices\obj\Debug\TestServices.dll
+E:\BankNet\TestServices\obj\Debug\TestServices.pdb
+E:\BankNet\TestServices\bin\ExcelPackage.dll

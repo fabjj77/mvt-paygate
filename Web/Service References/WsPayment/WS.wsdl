@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://ws.payment.avg.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="WS" targetNamespace="http://ws.payment.avg.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://118.70.154.46:880/WsPayment/WS?xsd=1" namespace="http://ws.payment.avg.com/" />
+    </xsd:schema>
+  </types>
+  <message name="getVoucherPaymentInfo">
+    <part name="parameters" element="tns:getVoucherPaymentInfo" />
+  </message>
+  <message name="getVoucherPaymentInfoResponse">
+    <part name="parameters" element="tns:getVoucherPaymentInfoResponse" />
+  </message>
+  <message name="submitVoucher">
+    <part name="parameters" element="tns:submitVoucher" />
+  </message>
+  <message name="submitVoucherResponse">
+    <part name="parameters" element="tns:submitVoucherResponse" />
+  </message>
+  <message name="verifyPayment">
+    <part name="parameters" element="tns:verifyPayment" />
+  </message>
+  <message name="verifyPaymentResponse">
+    <part name="parameters" element="tns:verifyPaymentResponse" />
+  </message>
+  <portType name="WS">
+    <operation name="getVoucherPaymentInfo">
+      <input wsam:Action="http://ws.payment.avg.com/WS/getVoucherPaymentInfoRequest" message="tns:getVoucherPaymentInfo" />
+      <output wsam:Action="http://ws.payment.avg.com/WS/getVoucherPaymentInfoResponse" message="tns:getVoucherPaymentInfoResponse" />
+    </operation>
+    <operation name="submitVoucher">
+      <input wsam:Action="http://ws.payment.avg.com/WS/submitVoucherRequest" message="tns:submitVoucher" />
+      <output wsam:Action="http://ws.payment.avg.com/WS/submitVoucherResponse" message="tns:submitVoucherResponse" />
+    </operation>
+    <operation name="verifyPayment">
+      <input wsam:Action="http://ws.payment.avg.com/WS/verifyPaymentRequest" message="tns:verifyPayment" />
+      <output wsam:Action="http://ws.payment.avg.com/WS/verifyPaymentResponse" message="tns:verifyPaymentResponse" />
+    </operation>
+  </portType>
+  <binding name="WSPortBinding" type="tns:WS">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="getVoucherPaymentInfo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="submitVoucher">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="verifyPayment">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="WS">
+    <port name="WSPort" binding="tns:WSPortBinding">
+      <soap:address location="http://118.70.154.46:880/WsPayment/WS" />
+    </port>
+  </service>
+</definitions>

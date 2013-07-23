@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://ws.payment.avg.com/" targetNamespace="http://ws.payment.avg.com/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="getVoucherPaymentInfo" type="tns:getVoucherPaymentInfo" />
+  <xs:element name="getVoucherPaymentInfoResponse" type="tns:getVoucherPaymentInfoResponse" />
+  <xs:element name="submitVoucher" type="tns:submitVoucher" />
+  <xs:element name="submitVoucherResponse" type="tns:submitVoucherResponse" />
+  <xs:element name="verifyPayment" type="tns:verifyPayment" />
+  <xs:element name="verifyPaymentResponse" type="tns:verifyPaymentResponse" />
+  <xs:complexType name="submitVoucher">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="credential" type="tns:credential" />
+      <xs:element minOccurs="0" name="subNum" type="xs:string" />
+      <xs:element minOccurs="0" name="serviceFee" type="xs:string" />
+      <xs:element minOccurs="0" name="transCheckNum" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="credential">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="checksum" type="xs:string" />
+      <xs:element minOccurs="0" name="clientId" type="xs:string" />
+      <xs:element minOccurs="0" name="requestTime" type="xs:string" />
+      <xs:element minOccurs="0" name="signature" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="submitVoucherResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:response" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="responseData" type="xs:string" />
+      <xs:element minOccurs="0" name="returnCode" type="xs:string" />
+      <xs:element minOccurs="0" name="returnCodeDescription" type="xs:string" />
+      <xs:element minOccurs="0" name="signature" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getVoucherPaymentInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="credential" type="tns:credential" />
+      <xs:element minOccurs="0" name="keySearch" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="getVoucherPaymentInfoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:response" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyPayment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="transCheckNum" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="verifyPaymentResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
