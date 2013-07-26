@@ -1,21 +1,30 @@
 ﻿using System;
 using BankNet.Core;
 using BankNet.Entity;
-using Web.BanknetSandbox;
+//using Web.BanknetSandbox;//bản demo
+using Web.Banknet;
+using Web.BanknetServices;
 
 namespace Web.Helper
 {
     public class BanknetHelper
     {
-        private static string Merchant_trans_id = Config.MerchantTransId;// "168221";
-        private static string Merchant_code = Config.MerchantCode;// "010035";
+        private static string Merchant_trans_id = Config.MerchantTransId;// "168221";//
+        private static string Merchant_code = Config.MerchantCode;// "010035";//010042
         private static string Country_Code = Config.CountryCode;// "+84";
-        public static string Merchant_trans_key = Config.MerchantTransKey;//"fb9d207792845d2fac137f4ae0139c84";
+        public static string Merchant_trans_key = Config.MerchantTransKey;//"fb9d207792845d2fac137f4ae0139c84";//26dc6bdb54d04dc20036dad8313ed251
 
-        private static PaymentGatewayPortTypeClient _client;
-        private static PaymentGatewayPortTypeClient instance
+        //private static PaymentGatewayPortTypeClient _client;
+        //private static PaymentGatewayPortTypeClient instance
+        //{
+        //    //get { return _client ?? (_client = new PaymentGatewayPortTypeClient("PaymentGatewayHttpSoap11Endpoint")); }
+        //    get { return _client ?? (_client = new PaymentGatewayPortTypeClient("PaymentGatewayHttpSoap11Endpoint")); }
+        //}
+
+        private static PaymentGateway _client;
+        private static PaymentGateway instance
         {
-            get { return _client ?? (_client = new PaymentGatewayPortTypeClient("PaymentGatewayHttpSoap11Endpoint")); }
+            get { return _client ?? (_client = new PaymentGateway()); }
         }
 
         public static string Send_GoodInfo(string Good_code, string XMLDesc, string Net_cost, string Ship_Fee, string Tax, string URLSuccess, string URLFail, ref SendGoodInfo sendInfo)
@@ -33,7 +42,8 @@ namespace Web.Helper
             //
             try
             {
-                string s =instance.Send_GoodInfo(Merchant_trans_id, Merchant_code, Country_Code, Good_code, XMLDesc, Net_cost, Ship_Fee, Tax, URLSuccess, URLFail, TransHash);
+                //string s =instance.Send_GoodInfo(Merchant_trans_id, Merchant_code, Country_Code, Good_code, XMLDesc, Net_cost, Ship_Fee, Tax, URLSuccess, URLFail, TransHash);
+                string s = instance.Send_GoodInfo(Merchant_trans_id, Merchant_code, Country_Code, Good_code, XMLDesc, Net_cost, Ship_Fee, Tax, URLSuccess, URLFail, TransHash);
                 //
                 sendInfo.ResultId = getCodeResult(s);
                 sendInfo.OutString = s;

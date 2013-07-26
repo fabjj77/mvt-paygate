@@ -14,6 +14,22 @@ namespace BankNet.Core
 {
     public class Utility
     {
+        private static string GetIp(HttpContext context)
+        {
+            string s = "";
+            string ipList = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            if (!string.IsNullOrEmpty(ipList))
+            {
+                s = ipList.Split(',')[0];
+            }
+            else
+            {
+                s = context.Request.ServerVariables["REMOTE_ADDR"];
+            }
+            return s;
+        }
+
         public static bool isOnlyNumber(string s)
         {
             Regex isNumber = new Regex(@"^\d+$");
@@ -364,7 +380,76 @@ namespace BankNet.Core
 
         }
 
-        public static Boolean checkFormatInt(object x)
+        public static Boolean TryDateDMY(string sDate, out DateTime oDate)
+        {
+            oDate = new DateTime();
+            if (string.IsNullOrEmpty(sDate)) return false;
+            if (!checkFormatDate(sDate)) return false;
+            string[] arr = sDate.Split('/');
+            if (arr.Length != 3) return false;
+            int iDay = int.Parse(arr[0]);
+            int iMonth = int.Parse(arr[1]);
+            int iYear = int.Parse(arr[2]);
+            if (iDay < 0 || iDay > 31 || iMonth < 0 || iMonth > 12 || iYear < 1735 || iYear > 2500) return false;
+            if (iDay > GetMaxDay(iMonth, iYear)) return false;
+            oDate = new DateTime(iYear,iMonth,iDay);
+            return true;
+        }
+
+        public static bool checkDateDMY(string sDate)
+        {
+            if (string.IsNullOrEmpty(sDate)) return false;
+            if(!checkFormatDate(sDate)) return false;
+            string[] arr = sDate.Split('/');
+            if (arr.Length != 3) return false;
+            int iDay = int.Parse(arr[0]);
+            int iMonth = int.Parse(arr[1]);
+            int iYear = int.Parse(arr[2]);
+            if (iDay < 0 || iDay > 31 || iMonth < 0 || iMonth > 12 || iYear < 1735 || iYear > 2500) return false;
+            if (iDay > GetMaxDay(iMonth, iYear)) return false;
+            return true;
+        }
+
+        private static int GetMaxDay(int iMonth,int iYear)
+        {
+            switch (iMonth)
+            {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    return 31;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    return 30;
+                case 2:
+                    if (iYear % 4 == 0)
+                    {
+                        return 29;
+                    }
+                    else
+                    {
+                        return 28;
+                    }
+                default:
+                    return 0;
+            }
+        }
+
+        private static bool checkFormatDate(string s)
+        {
+            if (s == null) return false;
+            Regex isNumber = new Regex(@"^\d{2}\/\d{2}\/\d{4}$");
+            Match m = isNumber.Match(s);
+            return m.Success;
+        }
+
+        public static bool checkFormatInt(object x)
         {
             if (x == null) return true;
             if (x is DBNull) return true;

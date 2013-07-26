@@ -51,6 +51,8 @@
     <Compile Include="PayCardInfo.cs" />
     <Compile Include="QuerryBillStatusInfo.cs" />
     <Compile Include="SendGoodInfo.cs" />
+    <Compile Include="SmartlinkQueryInfo.cs" />
+    <Compile Include="SmartlinkRedirectUrlInfo.cs" />
     <Compile Include="SubmitVoucherInfo.cs" />
     <Compile Include="voucher.cs" />
   </ItemGroup>

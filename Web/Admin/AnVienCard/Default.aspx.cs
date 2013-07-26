@@ -21,14 +21,14 @@ namespace Web.Admin.AnVienCard
 
         protected void btnFilter_Click(object sender, EventArgs e)
         {
-            if (!Utility.isDate(fromDate.Text) || !Utility.isDate(toDate.Text))
+            DateTime date1;
+            DateTime date2;
+            if (!Utility.TryDateDMY(fromDate.Text,out date1) || !Utility.TryDateDMY(toDate.Text,out date2))
             {
                 Alert.Show("Định dạng ngày tháng sai!");
                 return;
             }
 
-            DateTime date1 = DateTime.Parse(fromDate.Text);
-            DateTime date2 = DateTime.Parse(toDate.Text);
             int iStatus = int.Parse(DDL_Status.SelectedValue);
             PayCardFilter(date1, date2, iStatus);
         }

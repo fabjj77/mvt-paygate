@@ -5,7 +5,8 @@ using BankNet.Data;
 using BankNet.Entity;
 using Web.Ajax;
 using Web.Helper;
-using Web.WsPaymentTest;
+//using Web.WsPaymentTest;
+using Web.WsPayment;
 
 namespace Web.Banknet
 {

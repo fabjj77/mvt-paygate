@@ -39,15 +39,16 @@
         #payIndex #cardAV 
         {
             background: url("/IMG/thanhtoanantv.png") no-repeat scroll 0 0 transparent;
-            height: 210px;
-            opacity: 0.8;
+            /*height: 210px;*/
+            height: 420px;
+            opacity: 1;
             position: absolute;
             width: 210px;
         }
         
         #payIndex  #CardMobile {
             background: url('/IMG/thanhtoanantv.png') 0 -210px no-repeat;
-            opacity: 0.8;
+            opacity: 1;
             position: absolute;
             width: 210px;
             height: 210px;
@@ -65,7 +66,7 @@
         
         #payIndex #SmartLink {
             background: url('/IMG/thanhtoanantv.png') no-repeat -467px 0;
-            opacity: 0.5;
+            opacity: 1;
             position: absolute;
             width: 210px;
             height: 420px;
@@ -100,15 +101,15 @@
                 <div id="cardAV">
                     <a href="/AnVienCard/"></a>
                 </div>
-                <div id="CardMobile">
+                <%--<div id="CardMobile">
                     <a href="/MobileCard/"></a>
-                </div>
+                </div>--%>
             </div>
             <div id="Payoo">
                 <a href="#"></a>
             </div>
             <div id="SmartLink">
-                <a href="#"></a>
+                <a href="/SmartLink/"></a>
             </div>
             <div id="BankNet">
                 <a href="/Banknet/"></a>

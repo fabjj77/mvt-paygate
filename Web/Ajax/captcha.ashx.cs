@@ -18,18 +18,10 @@ namespace Web.Ajax
         public void ProcessRequest(HttpContext context)
         {
 
-            if (!AllowCall(context)) return;
+            if (!Security.AllowCall(context)) return;
 
             context.Response.ContentType = "image/jpeg";
             CreateImage();
-        }
-
-        private bool AllowCall(HttpContext context)
-        {
-            string ServerLocal = context.Request.Url.Authority;
-            string ServerRefeffer = "";
-            if (context.Request.UrlReferrer != null) ServerRefeffer = context.Request.UrlReferrer.Authority;
-            return (ServerLocal == ServerRefeffer);
         }
 
         private void CreateImage()

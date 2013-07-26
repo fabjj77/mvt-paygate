@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Web;
 
 namespace BankNet.Core
 {
@@ -26,5 +23,13 @@ namespace BankNet.Core
         //    CheckMD5 md5 = new CheckMD5();
         //    return md5.getMd5Hash(input);
         //}
+
+        public static bool AllowCall(HttpContext context)
+        {
+            string ServerLocal = context.Request.Url.Authority;
+            string ServerRefeffer = "";
+            if (context.Request.UrlReferrer != null) ServerRefeffer = context.Request.UrlReferrer.Authority;
+            return (ServerLocal == ServerRefeffer);
+        }
     }
 }

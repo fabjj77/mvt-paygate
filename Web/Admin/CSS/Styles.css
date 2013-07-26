@@ -23,6 +23,10 @@ a {
     margin: 10px;
 }
 
+fieldset {
+    padding: 6px;
+}
+
 #content {
     display: block;
     margin: 0;
@@ -86,6 +90,10 @@ a {
     -moz-border-radius-topright: 5px;
 }
 
+#content-wrapper .content-wrapper-detail{
+    padding: 10px;
+}
+
 #footer {
     display: block;
     border: 1px solid #aaa;
@@ -121,6 +129,7 @@ table.Contents TD
 {
     background-color: rgb(242, 249, 255);
     height: 20px;
+    border-bottom: 1px solid #ddd;
 }
 
 .Contents .AlterItem

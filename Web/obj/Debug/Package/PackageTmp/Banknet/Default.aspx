@@ -4,6 +4,7 @@
     <title>Hệ thống thanh toán cước THAV bằng thẻ cào điện thoại</title>
     <script type="text/javascript">
         var sErr = '<%=sErr %>';
+        var sDate = '<%=sDate %>';
     </script>
     <style>
         #Div3, #Div2
@@ -125,7 +126,7 @@
                                         <div class="pay-input">
                                             <input type="text" onblur="paycardBlurSTB();" onfocus="paycardFocusSTB();" class="pay-background InputStyle"
                                                 placeholder="Nhập 12 ký tự Mã số thẻ vào đây" tabindex="2" maxlength="12" size="20"
-                                                name="TB_KeyID" id="TB_KeyID" />
+                                                name="TB_KeyID" id="TB_KeyID" autocomplete="off" />
                                         </div>
                                     </div>
                                     <div class="field-right pay-message help-step1">

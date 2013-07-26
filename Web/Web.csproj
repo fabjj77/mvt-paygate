@@ -68,6 +68,7 @@
     <Content Include="Admin\index.htm" />
     <Content Include="Admin\JS\Script.js" />
     <Content Include="Admin\login.aspx" />
+    <Content Include="App_Data\MerchantTransId.txt" />
     <Content Include="Banknet\Default.aspx" />
     <Content Include="Banknet\fail.aspx" />
     <Content Include="Banknet\script\script.js" />
@@ -91,6 +92,11 @@
     <Content Include="AnVienCard\Default.aspx" />
     <Content Include="Ajax\GateCardCmd.ashx" />
     <Content Include="Admin\Admin.Master" />
+    <Content Include="Ajax\SmartlinkCmd.ashx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Service References\BanknetSandbox\configuration91.svcinfo" />
     <None Include="Service References\BanknetSandbox\configuration.svcinfo" />
     <None Include="Service References\BanknetSandbox\PaymentGateway.wsdl" />
@@ -123,6 +129,10 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="SmartLink\Default.aspx" />
+    <Content Include="SmartLink\fail.aspx" />
+    <Content Include="SmartLink\script\script.js" />
+    <Content Include="SmartLink\success.aspx" />
     <Content Include="usercontrols\admin\uc_Footer.ascx" />
     <Content Include="usercontrols\admin\uc_header.ascx" />
     <Content Include="usercontrols\admin\uc_Menu.ascx" />
@@ -183,6 +193,11 @@
     <None Include="Service References\WsPayment\WS.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Web References\BanknetServices\PaymentGateway.wsdl" />
+    <None Include="Web References\BanknetServices\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\Admin.Master.cs">
@@ -225,6 +240,9 @@
     <Compile Include="Ajax\PaycardCmd.ashx.cs">
       <DependentUpon>PaycardCmd.ashx</DependentUpon>
     </Compile>
+    <Compile Include="Ajax\SmartlinkCmd.ashx.cs">
+      <DependentUpon>SmartlinkCmd.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Banknet\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -262,6 +280,7 @@
     </Compile>
     <Compile Include="Helper\BanknetHelper.cs" />
     <Compile Include="Helper\KeyCache.cs" />
+    <Compile Include="Helper\SmartLinkHelper.cs" />
     <Compile Include="Helper\XMLReader.cs" />
     <Compile Include="MobileCard\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -279,6 +298,11 @@
     </Compile>
     <Compile Include="AnVienCard\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Service References\BanknetSandbox\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -319,6 +343,27 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SmartLink\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SmartLink\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SmartLink\fail.aspx.cs">
+      <DependentUpon>fail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SmartLink\fail.aspx.designer.cs">
+      <DependentUpon>fail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SmartLink\success.aspx.cs">
+      <DependentUpon>success.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SmartLink\success.aspx.designer.cs">
+      <DependentUpon>success.aspx</DependentUpon>
     </Compile>
     <Compile Include="usercontrols\admin\uc_Footer.ascx.cs">
       <DependentUpon>uc_Footer.ascx</DependentUpon>
@@ -376,15 +421,18 @@
     <Compile Include="usercontrols\uc_otherCard.ascx.designer.cs">
       <DependentUpon>uc_otherCard.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Web References\BanknetServices\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Admin\Banknet\" />
     <Folder Include="Admin\Export\" />
     <Folder Include="Admin\MobileCard\" />
-    <Folder Include="App_Data\" />
     <Folder Include="JS\" />
     <Folder Include="Payoo\" />
-    <Folder Include="SmartLink\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ajax\captcha.ashx" />
@@ -423,6 +471,22 @@
     <None Include="Service References\WsNapTheAvg\Nap.xsd">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="https://online.banknetvn.com.vn/pg/wsdl/PaymentGateway.wsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\BanknetServices\</RelPath>
+      <UpdateFromURL>https://online.banknetvn.com.vn/pg/wsdl/PaymentGateway.wsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Web_BanknetServices_PaymentGateway</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

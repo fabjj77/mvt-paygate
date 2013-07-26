@@ -37,8 +37,10 @@
                             <div class="title">
                                 <asp:ContentPlaceHolder ID="TitleContent" runat="server">tiêu đề</asp:ContentPlaceHolder> 
                             </div>
-                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                            </asp:ContentPlaceHolder>
+                            <div class="content-wrapper-detail">
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                </asp:ContentPlaceHolder>
+                            </div>
                         </div>
                     </td>
                 </tr>

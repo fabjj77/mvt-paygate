@@ -9,7 +9,12 @@ namespace Web.Helper
     {
         public static string KeyUserBanknet
         {
-            get { return "User_{0}"; }
+            get { return "Banknet_{0}"; }
+        }
+
+        public static string KeyUserSmartlink
+        {
+            get { return "Smartlink_{0}"; }
         }
     }
 }

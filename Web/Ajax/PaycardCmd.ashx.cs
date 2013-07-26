@@ -6,7 +6,8 @@ using System.Xml;
 using BankNet.Core;
 using BankNet.Data;
 using BankNet.Entity;
-using Web.WsNapTheAvgSandbox;
+using Web.WsNapTheAvg;//bản thật
+//using Web.WsNapTheAvgSandbox;//bản test
 
 namespace Web.Ajax
 {
@@ -18,7 +19,7 @@ namespace Web.Ajax
 
         public void ProcessRequest(HttpContext context)
         {
-            if (!AllowCall(context)) return;
+            if (!Security.AllowCall(context)) return;
             context.Response.ContentType = "application/json";
             
                 string sUserId = context.Request["UserId"];
@@ -124,14 +125,6 @@ namespace Web.Ajax
             XmlNodeList subnum = xDoc.GetElementsByTagName("expirationdate");
             string sRead = subnum[0].InnerText;
             return sRead;
-        }
-
-        private bool AllowCall(HttpContext context)
-        {
-            string ServerLocal = context.Request.Url.Authority;
-            string ServerRefeffer = "";
-            if (context.Request.UrlReferrer != null) ServerRefeffer = context.Request.UrlReferrer.Authority;
-            return (ServerLocal == ServerRefeffer);
         }
 
         public bool IsReusable

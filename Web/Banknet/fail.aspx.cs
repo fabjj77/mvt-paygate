@@ -1,11 +1,9 @@
 ﻿using System;
-using BankNet.Core;
 using BankNet.Core.Provider;
 using BankNet.Data;
 using BankNet.Entity;
 using Web.Ajax;
 using Web.Helper;
-using Web.WsPaymentTest;
 
 namespace Web.Banknet
 {
@@ -19,31 +17,6 @@ namespace Web.Banknet
             CacheInfo oCache = (CacheInfo)CacheProvider.Get(string.Format(KeyCache.KeyUserBanknet, Good_Code));
             if (oCache == null) Response.Redirect("/Banknet/", true);
             
-            ////send Fail
-            //ConfirmTransactionResultInfo oResultInfo = new ConfirmTransactionResultInfo()
-            //                                       {
-            //                                           CreateDate = DateTime.Now
-            //                                       };
-            //try
-            //{
-            //    string sConfig = BanknetHelper.ConfirmTransactionResult(oCache.sTrans_Id, "1", ref oResultInfo);
-
-            //    oResultInfo.ResultId = BanknetHelper.getCodeResult(sConfig);
-            //    oResultInfo.OutString = sConfig;
-            //}
-            //catch (Exception ex)
-            //{
-            //    oResultInfo.ResultId = ex.GetHashCode().ToString();
-            //    oResultInfo.OutString = ex.Message;
-            //    //throw;
-            //}
-            //finally
-            //{
-            //    CacheProvider.Remove(string.Format(KeyCache.KeyUserBanknet, Good_Code));
-            //    ConfirmTransactionResultData.instance.Add(oResultInfo);
-            //    Response.Redirect("/Banknet/#" + Good_Code + "|F", true);
-            //}
-
             QuerryBillStatusInfo oStatus = new QuerryBillStatusInfo()
             {
                 CreateDate = DateTime.Now
@@ -65,7 +38,6 @@ namespace Web.Banknet
             {
                 CacheProvider.Remove(string.Format(KeyCache.KeyUserBanknet, Good_Code));
                 QuerryBillStatusData.instance.Add(oStatus);
-
                 Response.Redirect("/Banknet/#" + Good_Code + "|F");
             }
         }

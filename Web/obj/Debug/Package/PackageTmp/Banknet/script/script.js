@@ -138,12 +138,15 @@ $(document).ready(function () {
                     alert("lỗi: " + data.msg);
                 }
                 else {
-                    if (!window.confirm('Giao dịch sẽ chuyển qua cổng thanh toán trang web thanh toán của Banknet?')) {
+                    window.location.href = data.msg;
+                    /*
+                    if (!window.confirm('Giao dịch sẽ chuyển qua cổng thanh Banknet?')) {
                         RefreshCaptcha2();
                     }
                     else {
                         window.location.href = data.msg;
                     }
+                    */
                 }
             }
         });
@@ -151,6 +154,7 @@ $(document).ready(function () {
 
     var hash = window.location.hash;
     if (hash != '') {
+        //if (sErr == '' && sDate == '') return;
         var arr = hash.split('|');
         if (arr.length >= 2) {
             if (arr[1] == 'T') {

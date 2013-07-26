@@ -12,7 +12,7 @@
             <div style="position: absolute; width: 125px; height: 80px; display: block; top: 5px;
                 left: 130px;">
             </div>
-        </a><a href="#">
+        </a><a href="/SmartLink/">
             <div style="position: absolute; width: 120px; height: 80px; display: block; top: 85px;
                 left: 5px;">
             </div>

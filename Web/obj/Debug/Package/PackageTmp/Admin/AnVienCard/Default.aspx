@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Thống kê giao dịch PayCard</title>
     <script src="/Admin/JS/Script.js" type="text/javascript"></script>
-    <script>
+    <script type="text/javascript">
         var sRoot = 'ContentPlaceHolder1_';
         $(function () {
             $('#' + sRoot + 'fromDate,#' + sRoot + 'toDate').datepicker({ dateFormat: 'dd/mm/yy' });
@@ -37,7 +37,7 @@
             <legend>Lọc nâng cao</legend>
             <br />
             <asp:Panel runat="server" ID="pn1" DefaultButton="btnFilter">
-                <table cellpadding="2" cellspacing="0">
+                <table cellpadding="2" cellspacing="4">
                     <tr>
                         <td>
                             Từ ngày
@@ -99,31 +99,6 @@
                         </td>
                     </tr>
             </HeaderTemplate>
-            <FooterTemplate>
-                </table>
-            </FooterTemplate>
-            <AlternatingItemTemplate>
-                <tr class="AlterItem">
-                    <td>
-                        <%#Eval("ID")%>
-                    </td>
-                    <td>
-                        <%#Eval("UserId")%>
-                    </td>
-                    <td>
-                        <%#Eval("CardId")%>
-                    </td>
-                    <td>
-                        <%#Eval("ResulId")%>
-                    </td>
-                    <td>
-                        <%#Eval("Msg")%>
-                    </td>
-                    <td>
-                        <%#string.Format("{0:HH:mm:ss dd/MM/yyyy}",Eval("CreateDate"))%>
-                    </td>
-                </tr>
-            </AlternatingItemTemplate>
             <ItemTemplate>
                 <tr class="Item">
                     <td>
@@ -146,5 +121,8 @@
                     </td>
                 </tr>
             </ItemTemplate>
+            <FooterTemplate>
+                </table>
+            </FooterTemplate>
         </asp:Repeater>
 </asp:Content>

@@ -50,6 +50,8 @@
     <Compile Include="PayCardData.cs" />
     <Compile Include="QuerryBillStatusData.cs" />
     <Compile Include="SendGoodData.cs" />
+    <Compile Include="SmartlinkQueryData.cs" />
+    <Compile Include="SmartlinkRedirectUrlData.cs" />
     <Compile Include="SubmitVoucherData.cs" />
   </ItemGroup>
   <ItemGroup>
