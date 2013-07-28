@@ -62,12 +62,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\AnVienCard\Default.aspx" />
+    <Content Include="Admin\Banknet\Default.aspx" />
     <Content Include="Admin\CSS\Styles.css" />
     <Content Include="Admin\Default.aspx" />
     <Content Include="Admin\IMG\menu_head_fill.PNG" />
     <Content Include="Admin\index.htm" />
     <Content Include="Admin\JS\Script.js" />
     <Content Include="Admin\login.aspx" />
+    <Content Include="Admin\MobileCard\Default.aspx" />
     <Content Include="App_Data\MerchantTransId.txt" />
     <Content Include="Banknet\Default.aspx" />
     <Content Include="Banknet\fail.aspx" />
@@ -214,6 +216,13 @@
     <Compile Include="Admin\AnVienCard\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Banknet\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Banknet\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -227,6 +236,13 @@
     </Compile>
     <Compile Include="Admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MobileCard\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MobileCard\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ajax\BanknetCmd.ashx.cs">
       <DependentUpon>BanknetCmd.ashx</DependentUpon>
@@ -428,9 +444,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Admin\Banknet\" />
     <Folder Include="Admin\Export\" />
-    <Folder Include="Admin\MobileCard\" />
     <Folder Include="JS\" />
     <Folder Include="Payoo\" />
   </ItemGroup>

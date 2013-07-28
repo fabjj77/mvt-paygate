@@ -95,6 +95,9 @@
                             Thông báo
                         </td>
                         <td>
+                            Ngày gia hạn
+                        </td>
+                        <td>
                             Thời gian
                         </td>
                     </tr>
@@ -115,6 +118,9 @@
                     </td>
                     <td>
                         <%#Eval("Msg")%>
+                    </td>
+                    <td>
+                        <%#Eval("ResulFull")%>
                     </td>
                     <td>
                         <%#string.Format("{0:HH:mm:ss dd/MM/yyyy}",Eval("CreateDate"))%>

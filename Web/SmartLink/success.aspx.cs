@@ -92,12 +92,12 @@ namespace Web.SmartLink
 
                             oSVInfo.returnCode = wsResult.returnCode;
                             oSVInfo.returnCodeDescription = wsResult.returnCodeDescription;
-                            oSVInfo.responseData = wsResult.responseData;
+                            string sResultDate = XMLReader.ReadResultVocher(oSVInfo.responseData);//dt
+                            oSVInfo.responseData = sResultDate;
                             oSVInfo.signature = wsResult.signature;
 
                             if (oSVInfo.returnCode == "")
                             {
-                                string sResultDate = XMLReader.ReadResultVocher(oSVInfo.responseData);//dt
                                 Session[Config.GetSessionsResultDate] = sResultDate;//ss
 
                                 Response.Redirect("/SmartLink/#" + sTranId + "|T", false);

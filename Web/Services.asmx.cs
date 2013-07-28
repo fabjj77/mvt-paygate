@@ -48,12 +48,12 @@ namespace Web
         }
 
         [WebMethod(Description = "Lấy list thông tin thẻ cào điện thoại - status=0: ok | =1: no ok| 2: all"), SoapHeader("AuthHeader")]
-        public List<GateCardInfo> GetListMobileCard(DateTime date1, DateTime date2, int status)
+        public List<GateCardInfo> GetListMobileCard(DateTime date1, DateTime date2,string sType,  int status)
         {
             if (!CheckAuth()) return null;
             try
             {
-                return GateCardData.instance.GetListExport(date1, date2, status);
+                return GateCardData.instance.GetListExport(date1, date2,sType, status);
             }
             catch (Exception)
             {

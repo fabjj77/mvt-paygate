@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Web.Admin.AnVienCard.Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Web.Admin.MobileCard.Default" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>Thống kê giao dịch PayCard</title>
+    <title>Thống kê giao dịch thẻ cào mobile</title>
     <script src="/Admin/JS/Script.js" type="text/javascript"></script>
     <script type="text/javascript">
         var sRoot = 'ContentPlaceHolder1_';
@@ -9,7 +9,7 @@
         });
 
         $(document).ready(function () {
-            $('#' +sRoot +'btnFilter').click(function () {
+            $('#' + sRoot + 'btnFilter').click(function () {
                 return CheckSubmit();
             });
         });
@@ -30,7 +30,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="TitleContent" runat="server">
-    Thống kê giao dịch thẻ cào An Viên
+    Thống kê giao dịch thẻ cào mobile
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <fieldset style="margin-bottom: 20px;">
@@ -50,7 +50,17 @@
                     </tr>
                     <tr>
                         <td>
-                            Lọc kết quả:
+                            Lọc theo thẻ:
+                        </td>
+                        <td>
+                            <asp:DropDownList ID="DDL_Type" runat="server">
+                                <asp:ListItem Value="0">Tất cả</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Lọc theo kết quả:
                         </td>
                         <td>
                             <asp:DropDownList ID="DDL_Status" runat="server">
@@ -86,16 +96,25 @@
                             Mã hợp đồng
                         </td>
                         <td>
-                            Mã thẻ
-                        </td>
-                        <td>
                             Mã giao dịch
                         </td>
                         <td>
-                            Thông báo
+                            Loại thẻ
                         </td>
                         <td>
-                            Ngày gia hạn
+                            Serials
+                        </td>
+                        <td>
+                            Số thẻ
+                        </td>
+                        <td>
+                            Số tiền
+                        </td>
+                        <td>
+                            Mã thông báo
+                        </td>
+                        <td>
+                            Thông báo
                         </td>
                         <td>
                             Thời gian
@@ -111,16 +130,25 @@
                         <%#Eval("UserId")%>
                     </td>
                     <td>
+                        <%#Eval("TransId")%>
+                    </td>
+                    <td>
+                        <%#Eval("ServiceID")%>
+                    </td>
+                    <td>
+                        <%#Eval("SerialsId")%>
+                    </td>
+                    <td>
                         <%#Eval("CardId")%>
                     </td>
                     <td>
-                        <%#Eval("ResulId")%>
+                        <%#string.Format("{0:N0}",Eval("Amount"))%>
+                    </td>
+                    <td>
+                        <%#Eval("ResultId")%>
                     </td>
                     <td>
                         <%#Eval("Msg")%>
-                    </td>
-                    <td>
-                        <%#Eval("ResulFull")%>
                     </td>
                     <td>
                         <%#string.Format("{0:HH:mm:ss dd/MM/yyyy}",Eval("CreateDate"))%>

@@ -1,42 +1,55 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.UI.WebControls;
 using BankNet.Core;
 using BankNet.Data;
 using BankNet.Entity;
 using OfficeOpenXml;
 using Web.Helper;
 
-namespace Web.Admin.AnVienCard
+namespace Web.Admin.MobileCard
 {
     public partial class Default : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack)
+            {
+                Load_DDL();
+            }
+        }
+
+        private void Load_DDL()
+        {
+            DDL_Type.Items.Add(new ListItem("Thẻ Viettel","CardInputViettel"));
+            DDL_Type.Items.Add(new ListItem("Thẻ Mobiphone","CardInputVMS"));
+            DDL_Type.Items.Add(new ListItem("Thẻ Vinaphone","CardInputVNP"));
+            DDL_Type.Items.Add(new ListItem("Thẻ Gate","CardInputGate"));
         }
 
         protected void btnFilter_Click(object sender, EventArgs e)
         {
             DateTime date1;
             DateTime date2;
-            if (!Utility.TryDateDMY(fromDate.Text,out date1) || !Utility.TryDateDMY(toDate.Text,out date2))
+            if (!Utility.TryDateDMY(fromDate.Text, out date1) || !Utility.TryDateDMY(toDate.Text, out date2))
             {
                 Alert.Show("Định dạng ngày tháng sai!");
                 return;
             }
 
             int iStatus = int.Parse(DDL_Status.SelectedValue);
-            PayCardFilter(date1, date2, iStatus);
+
+            PayCardFilter(date1, date2, DDL_Type.SelectedValue, iStatus);
         }
 
-        private void PayCardFilter(DateTime date1, DateTime date2, int status)
+        private void PayCardFilter(DateTime date1, DateTime date2,string sType, int status)
         {
-            var list = PayCardData.instance.GetListExport(date1, date2, status);
+            var list = GateCardData.instance.GetListExport(date1, date2,sType, status);
             Contents.DataSource = list;
             Contents.DataBind();
             LtTotal.Text = "Tổng số giao dịch:" + list.Count().ToString();
-            Session[KeyCache.KeySesionAVCard] = list;
+            Session[KeyCache.KeySesionMobileCard] = list;
         }
 
         protected void btnExportAll_Click(object sender, EventArgs e)
@@ -46,7 +59,7 @@ namespace Web.Admin.AnVienCard
 
         private void ExportExcel()
         {
-            var list = (List<PayCardInfo>)Session[KeyCache.KeySesionAVCard];
+            var list = (List<PayCardInfo>)Session[KeyCache.KeySesionMobileCard];
             if (list == null || list.Count() == 0)
             {
                 Alert.Show("Không có dữ liệu!");
@@ -55,13 +68,13 @@ namespace Web.Admin.AnVienCard
             try
             {
                 string sdate = DateTime.Now.ToString("yyyy_MM_dd_HHmmss");
-                string fileName ="AnVietCard_" + sdate + ".xlsx";
+                string fileName = "MobileCard_" + sdate + ".xlsx";
                 var fullpath = Server.MapPath("~/Admin/Export/" + fileName);
                 using (var xlPackage = ExcelHelper.OpenFromFile(fullpath))
                 {
                     //Note: http://excelpackage.codeplex.com/wikipage?title=Creating%20an%20Excel%20spreadsheet%20from%20scratch&referringTitle=Home
 
-                    const string exportName = "PayCard";
+                    const string exportName = "Mobile";
                     ExcelWorksheet worksheet = xlPackage.Workbook.Worksheets.Add(exportName);
 
                     //Add table headers going cell by cell.

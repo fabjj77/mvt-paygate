@@ -16,5 +16,25 @@ namespace Web.Helper
         {
             get { return "Smartlink_{0}"; }
         }
+
+        public static string KeySesionAVCard
+        {
+            get { return "AnVienCard"; }
+        }
+
+        public static string KeySesionMobileCard
+        {
+            get { return "MobileCard"; }
+        }
+
+        public static string KeySesionBanknet
+        {
+            get { return "Banknet"; }
+        }
+
+        public static string KeySesionSmartlink
+        {
+            get { return "Banknet"; }
+        }
     }
 }

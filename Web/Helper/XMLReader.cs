@@ -12,6 +12,7 @@ namespace Web.Helper
     {
         public static string ReadResultVocher(string sXML)
         {
+            if (string.IsNullOrEmpty(sXML)) return "";
             XmlDocument xDoc = new XmlDocument();
             XmlReader reader = XmlReader.Create(new StringReader(sXML));
             xDoc.Load(reader);

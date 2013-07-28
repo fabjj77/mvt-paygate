@@ -6,6 +6,7 @@ using System.Xml;
 using BankNet.Core;
 using BankNet.Data;
 using BankNet.Entity;
+using Web.Helper;
 using Web.WsNapTheAvg;//bản thật
 //using Web.WsNapTheAvgSandbox;//bản test
 
@@ -85,13 +86,13 @@ namespace Web.Ajax
                 
                 if (oResult != null)
                 {
-                    info.ResulFull = oResult.responseData ?? "";
+                    info.ResulFull = XMLReader.ReadResultVocher(oResult.responseData ?? "");
                     info.ResulId = oResult.returnCode;
                     info.Msg = oResult.returnCodeDescription ?? "";
 
                     if (info.ResulId == "" && info.ResulFull!="")
                     {
-                        context.Response.Write(string.Format("{{\"error\":{0},\"msg\":\"{1}\"}}", 0, ReadResultVocher(oResult.responseData)));
+                        context.Response.Write(string.Format("{{\"error\":{0},\"msg\":\"{1}\"}}", 0, info.ResulFull));
                     }
                     else
                     {
@@ -114,17 +115,6 @@ namespace Web.Ajax
                 PayCardData.instance.Add(info);
                 context.Session.Remove(Config.GetSessionCode);
             }
-        }
-
-        private string ReadResultVocher(string sXML)
-        {
-            XmlDocument xDoc = new XmlDocument();
-            XmlReader reader = XmlReader.Create(new StringReader(sXML));
-            xDoc.Load(reader);
-
-            XmlNodeList subnum = xDoc.GetElementsByTagName("expirationdate");
-            string sRead = subnum[0].InnerText;
-            return sRead;
         }
 
         public bool IsReusable

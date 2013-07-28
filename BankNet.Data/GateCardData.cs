@@ -124,12 +124,13 @@ namespace BankNet.Data
         //    return list;
         //}
 
-        public List<GateCardInfo> GetListExport(DateTime date1, DateTime date2, int status)
+        public List<GateCardInfo> GetListExport(DateTime date1, DateTime date2,string sType,  int status)
         {
             List<GateCardInfo> list = null;
             SqlParameter[] param = {
                                        new SqlParameter("@Date1",date1),
                                        new SqlParameter("@Date2",date2),
+                                       new SqlParameter("@ServiceID",sType), 
                                        new SqlParameter("@Status",status)
                                    };
             var r = DataHelper.ExecuteReader(Config.ConnectString, "usp_GateCard_GetListExport", param);

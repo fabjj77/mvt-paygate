@@ -20,28 +20,28 @@ namespace Web.Banknet
             CacheInfo oCache = (CacheInfo)CacheProvider.Get(string.Format(KeyCache.KeyUserBanknet, Good_Code));
             if (oCache == null) Response.Redirect("/Banknet/", true);
 
-            //send success
+            ////send success
 
-            QuerryBillStatusInfo oStatus = new QuerryBillStatusInfo()
-                                               {
-                                                   CreateDate = DateTime.Now
-                                               };
-            try
-            {
-                string sStatus = BanknetHelper.QuerryBillStatus(oCache.sTrans_Id,ref oStatus);
+            //QuerryBillStatusInfo oStatus = new QuerryBillStatusInfo()
+            //                                   {
+            //                                       CreateDate = DateTime.Now
+            //                                   };
+            //try
+            //{
+            //    string sStatus = BanknetHelper.QuerryBillStatus(oCache.sTrans_Id,ref oStatus);//quá lâu
 
-                oStatus.ResultId = BanknetHelper.getCodeResult(sStatus);
-                oStatus.OutString = sStatus;
+            //    oStatus.ResultId = BanknetHelper.getCodeResult(sStatus);
+            //    oStatus.OutString = sStatus;
 
-                if (oStatus.ResultId == "00")
-                {
+            //    if (oStatus.ResultId == "00")
+            //    {
                     ConfirmTransactionResultInfo oConfirmInfo = new ConfirmTransactionResultInfo()
                                                                     {
                                                                         CreateDate = DateTime.Now
                                                                     };
                     try
                     {
-                        string sConfirm = BanknetHelper.ConfirmTransactionResult(oCache.sTrans_Id, "0", ref oConfirmInfo);
+                        string sConfirm = BanknetHelper.ConfirmTransactionResult(oCache.sTrans_Id, "0", ref oConfirmInfo);// quá lâu
                         oConfirmInfo.ResultId = BanknetHelper.getCodeResult(sConfirm);
                         oConfirmInfo.OutString = sConfirm;
                         
@@ -62,22 +62,23 @@ namespace Web.Banknet
                                 var cred = new credential { clientId = Config.ClientIdBanknet };
                                 var wsResult = wsclient.submitVoucher(cred, oSVInfo.UserId, oSVInfo.Amount.ToString(), oSVInfo.TransId);
 
+
                                 oSVInfo.returnCode = wsResult.returnCode;
                                 oSVInfo.returnCodeDescription = wsResult.returnCodeDescription;
-                                oSVInfo.responseData = wsResult.responseData;
+                                string sResultDate = XMLReader.ReadResultVocher(oSVInfo.responseData);//dt
+                                oSVInfo.responseData = sResultDate;
                                 oSVInfo.signature = wsResult.signature;
 
                                 if (oSVInfo.returnCode == "")
                                 {
-                                    string sResultDate = XMLReader.ReadResultVocher(oSVInfo.responseData);//dt
                                     Session[Config.GetSessionsResultDate] = sResultDate;//ss
 
-                                    Response.Redirect("/Banknet/#" + Good_Code + "|T",false);
+                                    Response.Redirect("/Banknet/#" + Good_Code + "|T");
                                 }
                                 else
                                 {
                                     Session[Config.GetSessionsResultFail] = wsResult.returnCodeDescription;//ss
-                                    Response.Redirect("/Banknet/#" + Good_Code + "|F|Y", false);
+                                    Response.Redirect("/Banknet/#" + Good_Code + "|F|Y");
                                 }
                             }
                             catch (Exception ex)
@@ -109,24 +110,24 @@ namespace Web.Banknet
                     {
                         ConfirmTransactionResultData.instance.Add(oConfirmInfo);
                     }
-                }
-                else
-                {
-                    Response.Redirect("/Banknet/#" + Good_Code + "|F|N");
-                }
-            }
-            catch (Exception ex)
-            {
-                oStatus.ResultId = ex.GetHashCode().ToString();
-                oStatus.OutString = ex.Message;
-                Response.Redirect("/Banknet/#" + Good_Code + "|F|N");
-                //throw;
-            }
-            finally
-            {
-                CacheProvider.Remove(string.Format(KeyCache.KeyUserBanknet, Good_Code));
-                QuerryBillStatusData.instance.Add(oStatus);
-            }
+            //    }
+            //    else
+            //    {
+            //        Response.Redirect("/Banknet/#" + Good_Code + "|F|N");
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    oStatus.ResultId = ex.GetHashCode().ToString();
+            //    oStatus.OutString = ex.Message;
+            //    Response.Redirect("/Banknet/#" + Good_Code + "|F|N");
+            //    //throw;
+            //}
+            //finally
+            //{
+            //    CacheProvider.Remove(string.Format(KeyCache.KeyUserBanknet, Good_Code));
+            //    QuerryBillStatusData.instance.Add(oStatus);
+            //}
         }
     }
 }

@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BanknetExportInfo.cs" />
     <Compile Include="ConfirmTransactionResultInfo.cs" />
     <Compile Include="CustomerGateInfo.cs" />
     <Compile Include="GateCardInfo.cs" />

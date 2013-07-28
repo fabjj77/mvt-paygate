@@ -11,30 +11,30 @@
   <message name="getVoucherPaymentInfoResponse">
     <part name="parameters" element="tns:getVoucherPaymentInfoResponse" />
   </message>
-  <message name="submitVoucher">
-    <part name="parameters" element="tns:submitVoucher" />
-  </message>
-  <message name="submitVoucherResponse">
-    <part name="parameters" element="tns:submitVoucherResponse" />
-  </message>
   <message name="verifyPayment">
     <part name="parameters" element="tns:verifyPayment" />
   </message>
   <message name="verifyPaymentResponse">
     <part name="parameters" element="tns:verifyPaymentResponse" />
   </message>
+  <message name="submitVoucher">
+    <part name="parameters" element="tns:submitVoucher" />
+  </message>
+  <message name="submitVoucherResponse">
+    <part name="parameters" element="tns:submitVoucherResponse" />
+  </message>
   <portType name="WS">
     <operation name="getVoucherPaymentInfo">
       <input wsam:Action="http://ws.payment.avg.com/WS/getVoucherPaymentInfoRequest" message="tns:getVoucherPaymentInfo" />
       <output wsam:Action="http://ws.payment.avg.com/WS/getVoucherPaymentInfoResponse" message="tns:getVoucherPaymentInfoResponse" />
     </operation>
-    <operation name="submitVoucher">
-      <input wsam:Action="http://ws.payment.avg.com/WS/submitVoucherRequest" message="tns:submitVoucher" />
-      <output wsam:Action="http://ws.payment.avg.com/WS/submitVoucherResponse" message="tns:submitVoucherResponse" />
-    </operation>
     <operation name="verifyPayment">
       <input wsam:Action="http://ws.payment.avg.com/WS/verifyPaymentRequest" message="tns:verifyPayment" />
       <output wsam:Action="http://ws.payment.avg.com/WS/verifyPaymentResponse" message="tns:verifyPaymentResponse" />
+    </operation>
+    <operation name="submitVoucher">
+      <input wsam:Action="http://ws.payment.avg.com/WS/submitVoucherRequest" message="tns:submitVoucher" />
+      <output wsam:Action="http://ws.payment.avg.com/WS/submitVoucherResponse" message="tns:submitVoucherResponse" />
     </operation>
   </portType>
   <binding name="WSPortBinding" type="tns:WS">
@@ -48,7 +48,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="submitVoucher">
+    <operation name="verifyPayment">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -57,7 +57,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="verifyPayment">
+    <operation name="submitVoucher">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
