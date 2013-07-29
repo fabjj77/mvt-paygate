@@ -16,8 +16,6 @@ namespace Web.Helper
     public class SmartLinkHelper
     {
         private static String secureSecret = Config.SecureSecret;
-        //public static bool isValidsecureHash;
-        //public static bool isEmptysecureSecret;
 
         public static string getRedirectUrl(string sAmount,ref  SmartlinkRedirectUrlInfo oRedirectUrlInfo)
         {

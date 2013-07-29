@@ -37,6 +37,8 @@ namespace Web.SmartLink
             CacheInfo oCache = (CacheInfo)CacheProvider.Get(string.Format(KeyCache.KeyUserSmartlink, sTranId));
             if (oCache == null) Response.Redirect("/SmartLink/", true);
 
+            string sDerection = "";
+
             SmartlinkQueryInfo oQueryInfo = new SmartlinkQueryInfo()
             {
                 CreateDate = DateTime.Now
@@ -75,10 +77,11 @@ namespace Web.SmartLink
                     //giao dịch thành công
                     if(oQueryInfo.vpc_TxnResponseCode=="0")
                     {
+                        
                         //submit voucher
                         SubmitVoucherInfo oSVInfo = new SubmitVoucherInfo()
                         {
-                            GatePayId = Config.ClientIdBanknet,
+                            GatePayId = Config.ClientIdSmartLink,
                             UserId = oCache.User.subnum,
                             Amount = int.Parse(oCache.Voucher.vouchervalue),
                             CreateDate = DateTime.Now,
@@ -92,7 +95,7 @@ namespace Web.SmartLink
 
                             oSVInfo.returnCode = wsResult.returnCode;
                             oSVInfo.returnCodeDescription = wsResult.returnCodeDescription;
-                            string sResultDate = XMLReader.ReadResultVocher(oSVInfo.responseData);//dt
+                            string sResultDate = XMLReader.ReadResultVocher(wsResult.responseData);//dt
                             oSVInfo.responseData = sResultDate;
                             oSVInfo.signature = wsResult.signature;
 
@@ -100,14 +103,14 @@ namespace Web.SmartLink
                             {
                                 Session[Config.GetSessionsResultDate] = sResultDate;//ss
 
-                                Response.Redirect("/SmartLink/#" + sTranId + "|T", false);
+                                sDerection= "/SmartLink/#" + sTranId + "|T";
                             }
                             else
                             {
                                 //Session[Config.GetSessionsResultFail] = wsResult.returnCodeDescription;//ss
                                 Session[Config.GetSessionsResultFail] = "Giao dịch không thành công";
 
-                                Response.Redirect("/SmartLink/#" + sTranId + "|F|Y", false);
+                                sDerection="/SmartLink/#" + sTranId + "|F|Y";
                             }
                         }
                         catch (Exception ex)
@@ -116,36 +119,37 @@ namespace Web.SmartLink
                             Session[Config.GetSessionsResultFail] = ex.Message;
                             oSVInfo.returnCode = ex.GetHashCode().ToString();
                             oSVInfo.returnCodeDescription = ex.Message;
-                            Response.Redirect("/SmartLink/#" + sTranId + "|F|Y", false);
+                            sDerection="/SmartLink/#" + sTranId + "|F|Y";
                         }
                         finally
                         {
                             SubmitVoucherData.instance.Add(oSVInfo);
+                            //Response.Redirect(sDerection);
                         }
                     }
                     else
                     {
                         //Session[Config.GetSessionsResultFail] = SmartLinkHelper.getResponseDescription(oQueryInfo.vpc_TxnResponseCode??"");
                         Session[Config.GetSessionsResultFail] = "Giao dịch không thành công";
-                        Response.Redirect("/SmartLink/#" + sTranId + "|F", false);
+                        sDerection="/SmartLink/#" + sTranId + "|F";
                     }
                 }
                 else
                 {
-                    Response.Redirect("/SmartLink/#" + sTranId + "|F", false);
+                    sDerection="/SmartLink/#" + sTranId + "|F";
                 }
             }
             catch (Exception ex)
             {
                 oQueryInfo.vpc_TxnResponseCode = ex.GetHashCode().ToString();
                 oQueryInfo.vpc_Message = ex.Message;
-                Response.Redirect("/SmartLink/#" + sTranId + "|F", false);
-                //throw;
+                sDerection = "/SmartLink/#" + sTranId + "|F";
             }
             finally
             {
                 CacheProvider.Remove(string.Format(KeyCache.KeyUserSmartlink, sTranId));
                 SmartlinkQueryData.instance.Add(oQueryInfo);
+                if (sDerection != "") Response.Redirect(sDerection);
             }
         }
     }

@@ -223,7 +223,8 @@ namespace Web.Ajax
                     Voucher = oVoucher,
                     sTrans_Id =sTrans_Id,
                     Good_Code = Good_Code,
-                    User = oUser
+                    User = oUser,
+                    Merchant_trans_id = sendInfo.Merchant_trans_id
                 };
 
                 CacheProvider.AddWithTimeOut(string.Format(KeyCache.KeyUserBanknet, Good_Code), oCacheInfo, 720);
@@ -259,5 +260,6 @@ namespace Web.Ajax
         public voucher Voucher { get; set; }
         public string Good_Code { get; set; }
         public string sTrans_Id { get; set; }
+        public string Merchant_trans_id{ get; set; }
     }
 }

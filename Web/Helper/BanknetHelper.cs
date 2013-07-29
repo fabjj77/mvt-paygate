@@ -1,15 +1,15 @@
 ﻿using System;
+using System.Net.Mime;
+using System.Threading;
 using BankNet.Core;
 using BankNet.Entity;
 //using Web.BanknetSandbox;//bản demo
-using Web.Banknet;
 using Web.BanknetServices;
 
 namespace Web.Helper
 {
     public class BanknetHelper
     {
-        private static string Merchant_trans_id = Config.MerchantTransId;// "168221";//
         private static string Merchant_code = Config.MerchantCode;// "010035";//010042
         private static string Country_Code = Config.CountryCode;// "+84";
         public static string Merchant_trans_key = Config.MerchantTransKey;//"fb9d207792845d2fac137f4ae0139c84";//26dc6bdb54d04dc20036dad8313ed251
@@ -17,7 +17,6 @@ namespace Web.Helper
         //private static PaymentGatewayPortTypeClient _client;
         //private static PaymentGatewayPortTypeClient instance
         //{
-        //    //get { return _client ?? (_client = new PaymentGatewayPortTypeClient("PaymentGatewayHttpSoap11Endpoint")); }
         //    get { return _client ?? (_client = new PaymentGatewayPortTypeClient("PaymentGatewayHttpSoap11Endpoint")); }
         //}
 
@@ -29,6 +28,7 @@ namespace Web.Helper
 
         public static string Send_GoodInfo(string Good_code, string XMLDesc, string Net_cost, string Ship_Fee, string Tax, string URLSuccess, string URLFail, ref SendGoodInfo sendInfo)
         {
+            string Merchant_trans_id = GetMerchantTransId();
             string TransHash = Security.GetMD5Hash(Merchant_trans_id + Merchant_code + Good_code + Net_cost + Ship_Fee + Tax + Merchant_trans_key);
             //
             sendInfo.FunctionName = "Send_GoodInfo";
@@ -73,7 +73,13 @@ namespace Web.Helper
         //    return returnArgs[1];
         //}
 
-        public static string QuerryBillStatus(string Trans_id, ref QuerryBillStatusInfo oStatusInfo)
+        public static string QuerryBillStatus(string Merchant_trans_id, string Trans_id)
+        {
+            string TransHash = Security.GetMD5Hash(Merchant_trans_id + Trans_id + Merchant_code + Merchant_trans_key);
+            return instance.QuerryBillStatus(Merchant_trans_id, Trans_id, Merchant_code, TransHash);
+        }
+
+        public static string QuerryBillStatus(string Merchant_trans_id,string Trans_id, ref QuerryBillStatusInfo oStatusInfo)
         {
             string TransHash = Security.GetMD5Hash(Merchant_trans_id + Trans_id + Merchant_code + Merchant_trans_key);
 
@@ -85,7 +91,19 @@ namespace Web.Helper
             return instance.QuerryBillStatus(Merchant_trans_id,Trans_id, Merchant_code, TransHash);
         }
 
-        public static string ConfirmTransactionResult(string Trans_id, string Trans_result, ref ConfirmTransactionResultInfo oConfirmInfo)
+        /// <summary>
+        /// Xác nhận thanh toán thành công hay thất bại
+        /// </summary>
+        /// <param name="Trans_id">Mã giao dịch</param>
+        /// <param name="Trans_result">0: thành công | 1: thất bại</param>
+        /// <returns></returns>
+        public static string ConfirmTransactionResult(string Merchant_trans_id, string Trans_id, string Trans_result)
+        {
+            string TransHash = Security.GetMD5Hash(Merchant_trans_id + Trans_id + Merchant_code + Trans_result + Merchant_trans_key);
+            return instance.ConfirmTransactionResult(Merchant_trans_id, Trans_id, Merchant_code, Trans_result, TransHash);
+        }
+
+        public static string ConfirmTransactionResult(string Merchant_trans_id,string Trans_id, string Trans_result, ref ConfirmTransactionResultInfo oConfirmInfo)
         {
             string TransHash = Security.GetMD5Hash(Merchant_trans_id + Trans_id + Merchant_code + Trans_result + Merchant_trans_key);
 
@@ -157,6 +175,27 @@ namespace Web.Helper
                 transId = "";
             }
             return transId;
+        }
+
+        public static string GetMerchantTransId()
+        {
+            int i = System.Web.HttpContext.Current.Application["count"] == null ? 0 : int.Parse(System.Web.HttpContext.Current.Application["count"].ToString());
+            i++;
+            i = i > 999999 ? 0 : i;
+            System.Web.HttpContext.Current.Application["count"] = i;
+
+            //ThreadStart newThread = delegate { SaveCount(i); };
+            //Thread myThread = new Thread(newThread);
+            //myThread.Start();
+
+            return i.ToString();
+        }
+
+        private static void SaveCount(int i)
+        {
+            System.IO.StreamWriter writer = new System.IO.StreamWriter(System.Web.HttpContext.Current.Server.MapPath("/count.txt"));
+            writer.WriteLine(i);
+            writer.Close();
         }
 
         public static string getTransIdFromUrl_UseServicePMG(string url)

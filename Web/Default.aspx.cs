@@ -1,5 +1,4 @@
 ﻿using System;
-//using Web.BanknetSandbox;
 
 namespace Web
 {
@@ -7,7 +6,7 @@ namespace Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //PaymentGateway client = new PaymentGateway();
+            //Application["count"] = 1;
         }
     }
 }

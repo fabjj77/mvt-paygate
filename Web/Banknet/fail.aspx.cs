@@ -23,7 +23,7 @@ namespace Web.Banknet
             };
             try
             {
-                string sStatus = BanknetHelper.QuerryBillStatus(oCache.sTrans_Id, ref oStatus);
+                string sStatus = BanknetHelper.QuerryBillStatus(oCache.Merchant_trans_id, oCache.sTrans_Id, ref oStatus);
 
                 oStatus.ResultId = BanknetHelper.getCodeResult(sStatus);
                 oStatus.OutString = sStatus;

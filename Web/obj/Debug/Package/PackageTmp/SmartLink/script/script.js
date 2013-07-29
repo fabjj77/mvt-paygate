@@ -138,12 +138,7 @@ $(document).ready(function () {
                     alert("lỗi: " + data.msg);
                 }
                 else {
-                    if (!window.confirm('Giao dịch sẽ chuyển qua cổng thanh toán của Smartlink?')) {
-                        RefreshCaptcha2();
-                    }
-                    else {
-                        window.location.href = data.msg;
-                    }
+                    window.location.href = data.msg;
                 }
             }
         });
