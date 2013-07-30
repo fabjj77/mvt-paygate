@@ -7,8 +7,8 @@ using BankNet.Core.Provider;
 using BankNet.Data;
 using BankNet.Entity;
 using Web.Helper;
-//using Web.WsPayment;//bản thật
-using Web.WsPaymentTest;//bản test
+using Web.WsPayment;//bản thật
+//using Web.WsPaymentTest;//bản test
 
 namespace Web.Ajax
 {

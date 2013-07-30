@@ -6,7 +6,8 @@ using BankNet.Data;
 using BankNet.Entity;
 using Web.Ajax;
 using Web.Helper;
-using Web.WsPaymentTest;
+//using Web.WsPaymentTest;
+using Web.WsPayment;
 
 namespace Web.SmartLink
 {
@@ -45,7 +46,7 @@ namespace Web.SmartLink
             };
             try
             {
-                string sStatus = SmartLinkHelper.GetQuery(sTranId, ref oQueryInfo);
+                string sStatus = SmartLinkHelper.GetQuery(sTranId, ref oQueryInfo);//chư thấy trả về
                 if (!string.IsNullOrEmpty(sStatus))
                 {
                     String[] arr = sStatus.Split('&');
@@ -77,7 +78,6 @@ namespace Web.SmartLink
                     //giao dịch thành công
                     if(oQueryInfo.vpc_TxnResponseCode=="0")
                     {
-                        
                         //submit voucher
                         SubmitVoucherInfo oSVInfo = new SubmitVoucherInfo()
                         {
@@ -109,7 +109,6 @@ namespace Web.SmartLink
                             {
                                 //Session[Config.GetSessionsResultFail] = wsResult.returnCodeDescription;//ss
                                 Session[Config.GetSessionsResultFail] = "Giao dịch không thành công";
-
                                 sDerection="/SmartLink/#" + sTranId + "|F|Y";
                             }
                         }

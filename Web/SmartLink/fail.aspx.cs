@@ -5,7 +5,6 @@ using BankNet.Data;
 using BankNet.Entity;
 using Web.Ajax;
 using Web.Helper;
-using Web.WsPaymentTest;
 
 namespace Web.SmartLink
 {

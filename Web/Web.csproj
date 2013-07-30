@@ -73,6 +73,7 @@
     <Content Include="App_Data\MerchantTransId.txt" />
     <Content Include="Banknet\Default.aspx" />
     <Content Include="Banknet\fail.aspx" />
+    <Content Include="Banknet\IPN.aspx" />
     <Content Include="Banknet\script\script.js" />
     <Content Include="Banknet\success.aspx" />
     <Content Include="CSS\anvien_style.css" />
@@ -133,6 +134,7 @@
     </None>
     <Content Include="SmartLink\Default.aspx" />
     <Content Include="SmartLink\fail.aspx" />
+    <Content Include="SmartLink\IPN.aspx" />
     <Content Include="SmartLink\script\script.js" />
     <Content Include="SmartLink\success.aspx" />
     <Content Include="usercontrols\admin\uc_Footer.ascx" />
@@ -273,6 +275,13 @@
     <Compile Include="Banknet\fail.aspx.designer.cs">
       <DependentUpon>fail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Banknet\IPN.aspx.cs">
+      <DependentUpon>IPN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Banknet\IPN.aspx.designer.cs">
+      <DependentUpon>IPN.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Banknet\success.aspx.cs">
       <DependentUpon>success.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -373,6 +382,13 @@
     </Compile>
     <Compile Include="SmartLink\fail.aspx.designer.cs">
       <DependentUpon>fail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SmartLink\IPN.aspx.cs">
+      <DependentUpon>IPN.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SmartLink\IPN.aspx.designer.cs">
+      <DependentUpon>IPN.aspx</DependentUpon>
     </Compile>
     <Compile Include="SmartLink\success.aspx.cs">
       <DependentUpon>success.aspx</DependentUpon>

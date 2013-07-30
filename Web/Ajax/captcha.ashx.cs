@@ -36,12 +36,16 @@ namespace Web.Ajax
             int counter = 0;
             g.DrawRectangle(pen, rect);
             g.FillRectangle(b, rect);
+
+            DrawRandomLines(g);
+
             for (int i = 0; i < code.Length; i++)
             {
-                g.DrawString(code[i].ToString(), new Font("Verdena", 10 + rand.Next(14, 18)), blue, new PointF(10 + counter, 5));
-                counter += 20;
+                //g.DrawString(code[i].ToString(), new Font("Verdena", 10 + rand.Next(14, 18)), blue, new PointF(10 + counter, 5));
+                g.DrawString(code[i].ToString(), new Font("Verdena", 24), blue, new PointF(10 + counter, 5));
+                counter += 24;
             }
-            DrawRandomLines(g);
+            
             bitmap.Save(HttpContext.Current.Response.OutputStream, ImageFormat.Gif);
             g.Dispose();
             bitmap.Dispose();
@@ -66,6 +70,7 @@ namespace Web.Ajax
         {
             StringBuilder randomText = new StringBuilder();
             string alphabets = "0123456789abcdefghijklmnopqrstuvwxyzQWERTYUIOPASDFGHJKLZXCVBNM";
+            //string alphabets = "0123456789QWERTYUIOPASDFGHJKLZXCVBNM";
             Random r = new Random();
             for (int j = 0; j < 5; j++)
             {
